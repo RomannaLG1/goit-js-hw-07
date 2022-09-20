@@ -33,11 +33,16 @@ function selectImage(event) {
   const instance = basicLightbox.create(
     `<img src="${event.target.dataset.source}" width="800" height="600">`
   );
+
+  onClose: () => {
+    document.removeEventListener("keydown", closeEscape);
+  };
+
   instance.show();
 
-  getGalleryEl.addEventListener("keydown", (event) => {
-    if (event.code === "Escape") {
-      instance.close();
-    }
-  });
+  getGalleryEl.addEventListener("keydown", closeEscape);
+
+  function closeEscape(event) {
+    if (event.code === "Escape") instance.close();
+  }
 }
