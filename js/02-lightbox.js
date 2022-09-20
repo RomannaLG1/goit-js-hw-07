@@ -14,7 +14,7 @@ const makeGalleryItem = ({ preview, original, description }) => {
 </a>`;
 }
 
-const makeGalleryItemMarkup = galleryItems.map(makeGalleryItem).join();
+const makeGalleryItemMarkup = galleryItems.map(makeGalleryItem).join("");
 
 getGalleryEl.insertAdjacentHTML('afterbegin', makeGalleryItemMarkup);
 
